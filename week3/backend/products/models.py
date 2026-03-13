@@ -1,0 +1,24 @@
+from django.db import models
+
+
+class Product(models.Model):
+    product_id = models.CharField(max_length=50, unique=True)
+    title = models.CharField(max_length=255)
+    brand = models.CharField(max_length=255)
+    image = models.URLField()
+    lprice = models.BigIntegerField()
+    category1 = models.CharField(max_length=100, blank=True)
+    category2 = models.CharField(max_length=100, blank=True)
+    description = models.TextField(blank=True)
+    rating = models.IntegerField(default=0)
+    review_count = models.IntegerField(default=0)
+    stock = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = "products"
+
+    def __str__(self) -> str:
+        return f"{self.title} ({self.product_id})"
+
