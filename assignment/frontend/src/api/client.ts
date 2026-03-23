@@ -44,7 +44,7 @@ function resolveApiBaseUrl() {
     return 'http://localhost:3000/api';
   }
 
-  return 'http://backend:3000/api';
+  return '/api';
 }
 
 async function parseJson(response: Response) {
@@ -62,6 +62,7 @@ async function parseJson(response: Response) {
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const response = await fetch(`${resolveApiBaseUrl()}${path}`, {
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
       ...(init?.headers ?? {})
