@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:16-alpine
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=storefront_challenge
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  backend:
+    build: ./backend
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/storefront_challenge
+      - JWT_SECRET=dev-super-secret
+      - CLIENT_ORIGIN=http://localhost:5173
+      - COOKIE_NAME=session
+      - COOKIE_SAME_SITE=lax
+      - COOKIE_SECURE=false
+    depends_on:
+      - db
+  frontend:
+    build: ./frontend
+    ports:
+      - "4173:4173"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
