@@ -1,0 +1,4 @@
+nodul_modules
+dist
+.env
+.env.*
