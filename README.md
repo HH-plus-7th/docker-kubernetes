@@ -1,7 +1,7 @@
 # Week 7 완성본
 
 7주차 실습에서 만든 결과물의 완성본입니다!
-이어서 하시는 분은 건너뛰셔도 되고, 8주차에 새로 시작하는는 분이나 환경이 꼬이신 분은 이 폴더의 yaml을 그대로 적용하시면 됩니다👍
+이어서 하시는 분은 건너뛰셔도 되고, 8주차에 새로 시작하는 분이나 환경이 꼬이신 분은 이 폴더의 yaml을 그대로 적용하시면 됩니다👍
 
 ## 📦 파일 구성
 
@@ -20,13 +20,13 @@
 ## 🚀 적용 방법
 
 ```bash
-# week7 폴더 전체 한번에 적용
-kubectl apply -f week8/
+# 전체 한번에 적용
+kubectl apply -f .
 
 # 또는 개별 적용
-kubectl apply -f week8/deployment.yaml
-kubectl apply -f week8/service.yaml
-kubectl apply -f week8/pv-pvc.yaml  # 심화 과제 하실 분만
+kubectl apply -f ./deployment.yaml
+kubectl apply -f ./service.yaml
+kubectl apply -f ./pv-pvc.yaml  # 심화 과제 하실 분만
 ```
 
 ## ✅ 확인 포인트
