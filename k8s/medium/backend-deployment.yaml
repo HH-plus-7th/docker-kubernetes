@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: # 디플로이먼트 이름
+spec:
+  replicas: # 파드 개수
+  selector:
+    matchLabels:
+      app: # 셀렉터 레이블
+  template:
+    metadata:
+      labels:
+        app: # 파드 레이블
+    spec:
+      containers:
+        - name: # 컨테이너 이름
+          image: # 사용할 이미지
+          ports:
+            - containerPort: # 컨테이너 포트
+          env:
+            - name: DB_HOST
+              value: # DB 서비스 이름 (IP가 아닌 서비스 이름으로!)
+            - name: DB_PORT
+              value: # DB 포트
+            - name: DB_USER
+              value: # DB 유저명
+            - name: DB_PASSWORD
+              value: # DB 비밀번호
+            - name: DB_NAME
+              value: # DB 이름

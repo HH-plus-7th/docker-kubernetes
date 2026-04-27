@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: # PVC 이름 (db-deployment.yaml의 claimName과 일치해야 해요!)
+spec:
+  accessModes:
+    - # 접근 모드 (힌트: DB는 하나의 노드에서만 읽고 쓰면 돼요)
+  resources:
+    requests:
+      storage: # 필요한 스토리지 용량

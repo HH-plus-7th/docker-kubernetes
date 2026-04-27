@@ -32,9 +32,7 @@ app.get('/health', (req, res) => {
 
 // 전체 조회
 app.get('/todos', async (req, res) => {
-  const result = await pool.query(
-    'SELECT * FROM todos ORDER BY created_at ASC',
-  );
+  const result = await pool.query('SELECT * FROM todos ORDER BY created_at ASC');
   res.json(result.rows);
 });
 
@@ -44,7 +42,7 @@ app.post('/todos', async (req, res) => {
   if (!text) return res.status(400).json({ error: 'text는 필수예요!' });
   const result = await pool.query(
     'INSERT INTO todos (text) VALUES ($1) RETURNING *',
-    [text],
+    [text]
   );
   res.status(201).json(result.rows[0]);
 });
@@ -54,7 +52,7 @@ app.patch('/todos/:id/toggle', async (req, res) => {
   const { id } = req.params;
   const result = await pool.query(
     'UPDATE todos SET done = NOT done WHERE id = $1 RETURNING *',
-    [id],
+    [id]
   );
   res.json(result.rows[0]);
 });
@@ -81,7 +79,7 @@ async function startWithRetry(retries = 10, delay = 3000) {
         process.exit(1);
       }
       console.log(`${delay / 1000}초 후 재시도...`);
-      await new Promise((res) => setTimeout(res, delay));
+      await new Promise(res => setTimeout(res, delay));
     }
   }
 }

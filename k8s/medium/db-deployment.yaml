@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: # 디플로이먼트 이름
+spec:
+  replicas: # DB는 몇 개가 적절할까요?
+  selector:
+    matchLabels:
+      app: # 셀렉터 레이블
+  template:
+    metadata:
+      labels:
+        app: # 파드 레이블
+    spec:
+      containers:
+        - name: # 컨테이너 이름
+          image: # PostgreSQL 공식 이미지
+          ports:
+            - containerPort: # DB 포트
+          env:
+            - name: POSTGRES_USER
+              value: # DB 유저명
+            - name: POSTGRES_PASSWORD
+              value: # DB 비밀번호
+            - name: POSTGRES_DB
+              value: # DB 이름
+          volumeMounts:
+            - name: # 볼륨 이름
+              mountPath: /var/lib/postgresql/data
+              subPath: pgdata  # 마운트 포인트 직접 사용 방지용 (필수!)
+      volumes:
+        - name: # 볼륨 이름 (volumeMounts의 name과 일치해야 해요!)
+          persistentVolumeClaim:
+            claimName: # PVC 이름 (db-pvc.yaml의 name과 일치해야 해요!)

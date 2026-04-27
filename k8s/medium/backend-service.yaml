@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: # 서비스 이름 (backend-deployment의 DB_HOST와 일치해야 해요!)
+spec:
+  type: # 서비스 타입
+  selector:
+    app: # 연결할 파드의 레이블
+  ports:
+    - port: # 서비스 포트
+      targetPort: # 컨테이너 포트
