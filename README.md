@@ -69,9 +69,8 @@ docker-compose up --build
 브라우저에서 `http://localhost:3000` 접속하면 할일 목록 앱이 떠요.
 
 ## 📝 과제 진행 방법
-
 1. `k8s/` 폴더에서 난이도 선택 (low / medium / high)
 2. 선택한 폴더의 README 읽기
-3. 매니페스트 파일 완성하기
+3. `k8s/members/본인이름/` 폴더에 매니페스트 작성  ← 이 부분 추가
 4. `week9` 브랜치에 push
-5. ArgoCD UI에서 배포 상태 확인
+5. ArgoCD UI에서 본인 네임스페이스 배포 상태 확인
